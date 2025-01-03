@@ -1,6 +1,6 @@
 This is a fork of **_RealSolarSystem_**, intended to separate the **PQSMod_VertexHeightMapRSS** from RealSolarSystem, for anyone who wants to use **16-bit grayscale heightmaps** for their celestials without installing RealSolarSystem.
 
-For compatibility reasons, the PQSMod_VertexHeightMapRSS is renamed to **PQSMod_VertexHeightMap16Grayscale**, to prevent confliction of VertexHeightMapRSS itself and VertexHeightMap16 from Kopernicus Expansion.
+For compatibility reasons, the PQSMod_VertexHeightMapRSS is renamed to **PQSMod_VertexHeightMap16Grayscale**, to prevent conflict with VertexHeightMapRSS itself and VertexHeightMap16 from Kopernicus Expansion.
 
 ### Dependencies: ModuleManager and Kopernicus
 ### Incompatibilities: No
