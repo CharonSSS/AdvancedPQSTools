@@ -2,9 +2,13 @@ This is a fork of **_RealSolarSystem_**, intended to separate the **PQSMod_Verte
 
 For compatibility reasons, the PQSMod_VertexHeightMapRSS is renamed to **PQSMod_VertexHeightMap16Grayscale**, to prevent conflict with VertexHeightMapRSS itself and VertexHeightMap16 from Kopernicus Expansion.
 
-### Dependencies: ModuleManager and Kopernicus
+### Dependencies:
+* ModuleManager
+* Kopernicus
+* (Not a mod) Use [TopoConv](https://github.com/KSP-RO/RSS-Textures/tree/master/tools/TopoConv) to get the proper 16-bit DDS format grayscale heightmap
 ### Incompatibilities: No
-### Recommendations: (Not a mod) [GrayscaleGenerator](https://github.com/newo-ether/GrayscaleGenerator) is a tool to generate grayscale maps for 3D models. Specifically, it calculates the distance of each point on the surface relative to the origin point, and converts the result to an image using spherical projection. This project aims to solve the problem of importing custom celestial bodies into **_Kerbal Space Program_**.
+### Recommendations:
+* (Not a mod) [GrayscaleGenerator](https://github.com/newo-ether/GrayscaleGenerator) is a tool to generate grayscale maps for 3D models. Specifically, it calculates the distance of each point on the surface relative to the origin point, and converts the result to an image using spherical projection. This project aims to solve the problem of importing custom celestial bodies into **_Kerbal Space Program_**.
 ### Usage:
 	Kopernicus
 	{
