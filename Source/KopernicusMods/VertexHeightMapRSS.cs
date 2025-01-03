@@ -8,9 +8,9 @@ using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.Configuration.ModLoader;
 
-namespace RealSolarSystem
+namespace VertexHeightMap16Grayscale
 {
-    public class VertexHeightMapRSS : ModLoader<PQSMod_VertexHeightMapRSS>
+    public class VertexHeightMap16Grayscale : ModLoader<PQSMod_VertexHeightMap16Grayscale>
     {    
         // The map texture for the planet
         [ParserTarget("map")]

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferencePath>C:\_game\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\;C:\_game\Steam\steamapps\common\Kerbal Space Program\GameData\Kopernicus\Plugins\;C:\_game\Steam\steamapps\common\Kerbal Space Program\GameData\000_Harmony\</ReferencePath>
+  </PropertyGroup>
+</Project>

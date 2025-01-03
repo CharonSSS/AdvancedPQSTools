@@ -6,12 +6,12 @@
 using System;
 using UnityEngine;
 
-namespace RealSolarSystem
+namespace VertexHeightMap16Grayscale
 {
     /// <summary>
     /// A heightmap PQSMod that can parse encoded 16bpp textures
     /// </summary>
-    public class PQSMod_VertexHeightMapRSS : PQSMod_VertexHeightMap
+    public class PQSMod_VertexHeightMap16Grayscale : PQSMod_VertexHeightMap
     {
         public override void OnVertexBuildHeight(PQS.VertexBuildData data)
         {

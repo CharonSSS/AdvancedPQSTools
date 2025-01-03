@@ -1,0 +1,6 @@
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\GameData\VertexHeightMap16Grayscale\Plugins\VertexHeightMap16Grayscale.dll
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\GameData\VertexHeightMap16Grayscale\Plugins\VertexHeightMap16Grayscale.pdb
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\Source\obj\Debug\RealSolarSystem.csproj.AssemblyReference.cache
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\Source\obj\Debug\RealSolarSystem.csproj.CoreCompileInputs.cache
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\Source\obj\Debug\VertexHeightMap16Grayscale.dll
+C:\_game\Steam\steamapps\common\Kerbal Space Program\zips\VertexHeightMap16Grayscale\Source\obj\Debug\VertexHeightMap16Grayscale.pdb
