@@ -28,3 +28,5 @@ For compatibility reasons, the PQSMod_VertexHeightMapRSS is renamed to **PQSMod_
 	}
 
 All credits give to KSP-RO team.
+
+License: CC-BY-NC-SA, the same as RealSolarSystem.
