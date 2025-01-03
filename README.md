@@ -4,6 +4,7 @@ For compatibility reasons, the PQSMod_VertexHeightMapRSS is renamed to **PQSMod_
 
 ### Dependencies: ModuleManager and Kopernicus
 ### Incompatibilities: No
+### Recommendations: (Not a mod) [GrayscaleGenerator](https://github.com/newo-ether/GrayscaleGenerator) is a tool to generate grayscale maps for 3D models. Specifically, it calculates the distance of each point on the surface relative to the origin point, and converts the result to an image using spherical projection. This project aims to solve the problem of importing custom celestial bodies into **_Kerbal Space Program_**.
 ### Usage:
 	Kopernicus
 	{
