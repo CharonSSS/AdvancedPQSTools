@@ -6,7 +6,7 @@
 using System;
 using UnityEngine;
 
-namespace VertexHeightMap16Grayscale
+namespace AdvancedPQSTools
 {
     /// <summary>
     /// A heightmap PQSMod that can parse encoded 16bpp textures

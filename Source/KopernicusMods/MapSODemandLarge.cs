@@ -15,7 +15,7 @@ using UnityEngine;
 using Kopernicus.Configuration.Parsing;
 using Kopernicus;
 
-namespace VertexHeightMap16Grayscale
+namespace AdvancedPQSTools
 {
     /// <summary>
     /// MapSO Replacement to support Texture streaming and textures larger than 16k

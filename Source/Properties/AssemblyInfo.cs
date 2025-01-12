@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("VertexHeightMap16Grayscale")]
+[assembly: AssemblyTitle("AdvancedPQSTools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VertexHeightMap16Grayscale")]
-[assembly: AssemblyCopyright("Copyright © 2014 - 2022, KSP-RO Team")]
+[assembly: AssemblyProduct("AdvancedPQSTools")]
+[assembly: AssemblyCopyright("Copyright © 2014 - 2022, KSP-RO Team & ballisticfox & pkmniako")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

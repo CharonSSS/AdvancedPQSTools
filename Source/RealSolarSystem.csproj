@@ -9,8 +9,8 @@
     <ProjectGuid>{685BBBD5-86FA-43B0-BCAD-72328D37AC94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VertexHeightMap16Grayscale</RootNamespace>
-    <AssemblyName>VertexHeightMap16Grayscale</AssemblyName>
+    <RootNamespace>AdvancedPQSTools</RootNamespace>
+    <AssemblyName>AdvancedPQSTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\GameData\VertexHeightMap16Grayscale\Plugins\</OutputPath>
+    <OutputPath>..\GameData\AdvancedPQSTools\Plugins\</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\GameData\VertexHeightMap16Grayscale\Plugins\</OutputPath>
+    <OutputPath>..\GameData\AdvancedPQSTools\Plugins\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -44,6 +44,10 @@
     <Compile Include="KopernicusMods\MapSODemandLarge.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexHeightMapRSS.cs" />
     <Compile Include="KopernicusMods\VertexHeightMapRSS.cs" />
+    <Compile Include="KopernicusMods\PQSMod_BoundedDecal.cs" />
+    <Compile Include="KopernicusMods\BoundedDecal.cs" />
+    <Compile Include="KopernicusMods\PQSMod_VertexMitchellNetravaliHeightMap16.cs" />
+    <Compile Include="KopernicusMods\VertexMitchellNetravaliHeightMap16.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

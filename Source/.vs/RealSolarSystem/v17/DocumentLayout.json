@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\kopernicusmods\\vertexheightmaprss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\vertexheightmaprss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\mapsodemandlarge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\mapsodemandlarge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\kopernicusmods\\mapsodemandlarge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\mapsodemandlarge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\boundeddecal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\boundeddecal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\pqsmod_boundeddecal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\pqsmod_boundeddecal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\vertexmitchellnetravaliheightmap16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\vertexmitchellnetravaliheightmap16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\pqsmod_vertexmitchellnetravaliheightmap16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\pqsmod_vertexmitchellnetravaliheightmap16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\vertexheightmaprss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|solutionrelative:kopernicusmods\\vertexheightmaprss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\kopernicusmods\\pqsmod_vertexheightmaprss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -16,6 +32,9 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|RealSolarSystem||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685BBBD5-86FA-43B0-BCAD-72328D37AC94}|RealSolarSystem.csproj|c:\\_game\\steam\\steamapps\\common\\kerbal space program\\zips\\vertexheightmap16grayscale\\source\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,57 +44,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MapSODemandLarge.cs",
-              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\MapSODemandLarge.cs",
-              "RelativeDocumentMoniker": "KopernicusMods\\MapSODemandLarge.cs",
-              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\MapSODemandLarge.cs",
-              "RelativeToolTip": "KopernicusMods\\MapSODemandLarge.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PQSMod_VertexMitchellNetravaliHeightMap16.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexMitchellNetravaliHeightMap16.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\PQSMod_VertexMitchellNetravaliHeightMap16.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexMitchellNetravaliHeightMap16.cs",
+              "RelativeToolTip": "KopernicusMods\\PQSMod_VertexMitchellNetravaliHeightMap16.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T06:59:30.759Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "VertexHeightMapRSS.cs",
-              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexHeightMapRSS.cs",
-              "RelativeDocumentMoniker": "KopernicusMods\\VertexHeightMapRSS.cs",
-              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexHeightMapRSS.cs",
-              "RelativeToolTip": "KopernicusMods\\VertexHeightMapRSS.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T06:52:26.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PQSMod_VertexHeightMapRSS.cs",
-              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
-              "RelativeDocumentMoniker": "KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
-              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
-              "RelativeToolTip": "KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T06:52:24.309Z",
+              "WhenOpened": "2025-01-12T07:21:17.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "VertexMitchellNetravaliHeightMap16.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexMitchellNetravaliHeightMap16.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\VertexMitchellNetravaliHeightMap16.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexMitchellNetravaliHeightMap16.cs",
+              "RelativeToolTip": "KopernicusMods\\VertexMitchellNetravaliHeightMap16.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:21:15.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PQSMod_BoundedDecal.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_BoundedDecal.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\PQSMod_BoundedDecal.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_BoundedDecal.cs",
+              "RelativeToolTip": "KopernicusMods\\PQSMod_BoundedDecal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:20:51.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BoundedDecal.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\BoundedDecal.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\BoundedDecal.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\BoundedDecal.cs",
+              "RelativeToolTip": "KopernicusMods\\BoundedDecal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:20:50.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MapSODemandLarge.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\MapSODemandLarge.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\MapSODemandLarge.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\MapSODemandLarge.cs",
+              "RelativeToolTip": "KopernicusMods\\MapSODemandLarge.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:20:14.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VertexHeightMapRSS.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexHeightMapRSS.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\VertexHeightMapRSS.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\VertexHeightMapRSS.cs",
+              "RelativeToolTip": "KopernicusMods\\VertexHeightMapRSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:19:55.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PQSMod_VertexHeightMapRSS.cs",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
+              "RelativeDocumentMoniker": "KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
+              "RelativeToolTip": "KopernicusMods\\PQSMod_VertexHeightMapRSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T07:19:54.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "RealSolarSystem",
               "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\RealSolarSystem.csproj",
               "RelativeDocumentMoniker": "RealSolarSystem.csproj",
               "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\VertexHeightMap16Grayscale\\Source\\RealSolarSystem.csproj",
               "RelativeToolTip": "RealSolarSystem.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-03T06:51:45Z"
+              "WhenOpened": "2025-01-12T07:18:19.219Z",
+              "EditorCaption": ""
             }
           ]
         }

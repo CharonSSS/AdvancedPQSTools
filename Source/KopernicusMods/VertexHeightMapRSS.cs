@@ -8,7 +8,7 @@ using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.Configuration.ModLoader;
 
-namespace VertexHeightMap16Grayscale
+namespace AdvancedPQSTools
 {
     public class VertexHeightMap16Grayscale : ModLoader<PQSMod_VertexHeightMap16Grayscale>
     {    

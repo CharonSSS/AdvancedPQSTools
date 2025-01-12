@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RealSolarSystem.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RealSolarSystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RealSolarSystem.csproj.user",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj.user",
+              "RelativeDocumentMoniker": "RealSolarSystem.csproj.user",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj.user",
+              "RelativeToolTip": "RealSolarSystem.csproj.user",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
+              "WhenOpened": "2025-01-12T07:11:00.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RealSolarSystem.csproj",
+              "DocumentMoniker": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj",
+              "RelativeDocumentMoniker": "RealSolarSystem.csproj",
+              "ToolTip": "C:\\_game\\Steam\\steamapps\\common\\Kerbal Space Program\\zips\\AdvancedPQSTools\\Source\\RealSolarSystem.csproj",
+              "RelativeToolTip": "RealSolarSystem.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-12T07:10:28.564Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
