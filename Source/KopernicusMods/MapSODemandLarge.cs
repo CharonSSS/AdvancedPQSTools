@@ -554,6 +554,9 @@ namespace AdvancedPQSTools
         // GetPixelHeightAlpha - Double
         public override HeightAlpha GetPixelHeightAlpha(Double x, Double y)
         {
+            if (!IsLoaded)
+                Load();
+
             if (IsLoaded)
             {
                 return base.GetPixelHeightAlpha(x, y);
