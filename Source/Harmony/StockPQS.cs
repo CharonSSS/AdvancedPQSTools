@@ -8,7 +8,7 @@ namespace AdvancedPQSTools.Harmony
     {
         [HarmonyPatch("StartSphere")] // cant seem to patch Reset(), it seems to be different from other unity methods like Start()
         [HarmonyPrefix]
-        internal static void Prefix(PQS __instance, bool force)
+        internal static void Prefix_StartSphere(PQS __instance, bool force)
         {
             if (__instance.name != "Kerbin") // TODO: make this adjustable
                 return;
