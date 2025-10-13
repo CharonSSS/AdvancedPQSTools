@@ -35,11 +35,7 @@ namespace AdvancedPQSTools
             double rangeV;
 
             maxU = 1 - ((maxLong + 270) / 360);
-            if (maxU < 0)
-                maxU += 1;
             minU = 1 - ((minLong + 270) / 360);
-            if (minU < 0)
-                minU += 1;
             maxV = (maxLat + 90) / 180;
             minV = (minLat + 90) / 180;
             rangeU = minU - maxU;
@@ -80,11 +76,7 @@ namespace AdvancedPQSTools
             double rangeV;
 
             maxU = 1 - ((maxLong + 270) / 360);
-            if (maxU < 0)
-                maxU += 1;
             minU = 1 - ((minLong + 270) / 360);
-            if (minU < 0)
-                minU += 1;
             maxV = (maxLat + 90) / 180;
             minV = (minLat + 90) / 180;
             rangeU = minU - maxU;
