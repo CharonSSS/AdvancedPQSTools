@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>$(KSPRoot)\GameData\AdvancedPQSTools\Plugins\</OutputPath>
+    <OutputPath>..\GameData\AdvancedPQSTools\Plugins\</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>$(KSPRoot)\GameData\AdvancedPQSTools\Plugins\</OutputPath>
+    <OutputPath>..\GameData\AdvancedPQSTools\Plugins\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
