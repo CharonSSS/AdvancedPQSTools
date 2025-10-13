@@ -45,6 +45,7 @@
     <Compile Include="CommNetFixer.cs" />
     <Compile Include="GUI.cs" />
     <Compile Include="HarmonyPatcher.cs" />
+    <Compile Include="Harmony\StockPQS.cs" />
     <Compile Include="Harmony\Vessel.cs" />
     <Compile Include="KopernicusMods\MapSODemandLarge.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
