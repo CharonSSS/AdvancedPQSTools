@@ -7,8 +7,6 @@ namespace AdvancedPQSTools.Harmony
     {
         internal void Start()
         {
-            StockPQSPatches.LoadSettings();
-
             var harmony = new HarmonyLib.Harmony("AdvancedPQSTools.HarmonyPatcher");
             harmony.PatchAll();
         }
