@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AdvancedPQSTools.Harmony
+namespace AdvancedPQSTools
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
     public class HarmonyPatcher : MonoBehaviour
