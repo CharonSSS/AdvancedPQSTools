@@ -46,3 +46,5 @@ using System.Runtime.InteropServices;
 
 [assembly: KSPAssemblyDependency("Kopernicus", 1, 0)]
 [assembly: KSPAssemblyDependency("Kopernicus.Parser", 1, 0)]
+[assembly: KSPAssemblyDependency("ModuleManager", 1, 0)]
+[assembly: KSPAssemblyDependency("HarmonyKSP", 1, 0)]
