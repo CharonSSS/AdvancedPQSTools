@@ -50,10 +50,8 @@ namespace AdvancedPQSTools.Harmony
                 settings.TryGetValue("Body", ref Body);
                 if (settings.HasValue("minLevel") && int.TryParse(settings.GetValue("minLevel"), out int parsedMin))
                     minLevel = parsedMin;
-
                 if (settings.HasValue("maxLevel") && int.TryParse(settings.GetValue("maxLevel"), out int parsedMax))
                     maxLevel = parsedMax;
-
                 if (settings.HasValue("minDetailDistance") && double.TryParse(settings.GetValue("minDetailDistance"), out double parsedDistance))
                     minDetailDistance = parsedDistance;
             }
