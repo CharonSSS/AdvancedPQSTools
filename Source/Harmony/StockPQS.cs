@@ -40,7 +40,7 @@ namespace AdvancedPQSTools.Harmony
 
             if (PQSCache.PresetList != null)
             {
-                PQSCache.PQSSpherePreset preset = PQSCache.PresetList.GetPreset(__instance.gameObject.name);
+                PQSCache.PQSSpherePreset preset = PQSCache.PresetList.GetPreset(match.Body);
                 if (preset != null)
                 {
                     preset.minDistance = __instance.minDetailDistance;
@@ -49,7 +49,7 @@ namespace AdvancedPQSTools.Harmony
                     // StartSphere uses the presets if the presets aren't null, so we can preset them here
                 }
             }
-            Debug.Log($"[StockPQSPatches] Prefix_StartSphere applied for {__instance.name}: minLevel: {__instance.minLevel}, maxLevel: {__instance.maxLevel}, minDetailDistance: {__instance.minDetailDistance}");
+            Debug.Log($"[StockPQSPatches] Prefix_StartSphere applied for {match.Body}: minLevel: {__instance.minLevel}, maxLevel: {__instance.maxLevel}, minDetailDistance: {__instance.minDetailDistance}");
         }
 
         internal static void LoadSettings()
