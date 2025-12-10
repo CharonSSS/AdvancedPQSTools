@@ -10,6 +10,6 @@ C:\GitHub\AdvancedPQSTools\GameData\AdvancedPQSTools\Plugins\AdvancedPQSTools.dl
 C:\GitHub\AdvancedPQSTools\GameData\AdvancedPQSTools\Plugins\AdvancedPQSTools.pdb
 C:\GitHub\AdvancedPQSTools\Source\obj\Debug\RealSolarSystem.csproj.AssemblyReference.cache
 C:\GitHub\AdvancedPQSTools\Source\obj\Debug\RealSolarSystem.csproj.CoreCompileInputs.cache
-C:\GitHub\AdvancedPQSTools\Source\obj\Debug\RealSolarSystem.csproj.CopyComplete
 C:\GitHub\AdvancedPQSTools\Source\obj\Debug\AdvancedPQSTools.dll
 C:\GitHub\AdvancedPQSTools\Source\obj\Debug\AdvancedPQSTools.pdb
+C:\GitHub\AdvancedPQSTools\Source\obj\Debug\RealSola.70E256D0.Up2Date
