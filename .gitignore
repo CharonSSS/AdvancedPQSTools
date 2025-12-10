@@ -15,3 +15,5 @@ GameData/AdvancedPQSTools/Plugins/0Harmony.dll
 *.txt
 /Source/.vs/RealSolarSystem/v17/.suo
 /Source/.vs/RealSolarSystem/v17/DocumentLayout.backup.json
+/Source/obj/Debug
+/GameData/AdvancedPQSTools/Plugins

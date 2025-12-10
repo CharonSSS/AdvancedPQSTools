@@ -222,8 +222,9 @@ namespace AdvancedPQSTools
             midX = (float)centerXD - minX;
             // X wraps around as it is longitude.
             if (maxX == _width)
-                maxX = 0;
-            
+                // maxX = 0;
+                maxX = _width - 1;
+
             centerYD = y * _height;
             minY = (int)Math.Floor(centerYD);
             maxY = (int)Math.Ceiling(centerYD);
