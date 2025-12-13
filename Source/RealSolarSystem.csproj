@@ -88,10 +88,10 @@
       <HintPath>$(KSPRoot)\GameData\Kopernicus\Plugins\Kopernicus.dll</HintPath>
     </Reference>
     <Reference Include="Kopernicus.Parser">
-      <Private>False</Private>
+      <HintPath>$(KSPRoot)\GameData\Kopernicus\Plugins\Kopernicus.Parser.dll</HintPath>
     </Reference>
     <Reference Include="KSPTextureLoader">
-      <Private>False</Private>
+      <HintPath>$(KSPRoot)\GameData\KSPTextureLoader\Plugins\KSPTextureLoader.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
