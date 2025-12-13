@@ -1,8 +1,11 @@
-﻿using Kopernicus.Components;
+﻿using AdvancedPQSTools.OnDemand;
+using Kopernicus.Components;
 using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.ConfigParser.Enumerations;
 using Kopernicus.Configuration.ModLoader;
+using Kopernicus.Configuration.Parsing;
+using Kopernicus.OnDemand;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -18,37 +21,37 @@ namespace AdvancedPQSTools
     {
         // The map textures for the planet
         [ParserTarget("mapXn")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapXn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapXn
         {
             get { return Mod.vertexHeightMapXn; }
             set { Mod.vertexHeightMapXn = value; }
         }
         [ParserTarget("mapXp")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapXp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapXp
         {
             get { return Mod.vertexHeightMapXp; }
             set { Mod.vertexHeightMapXp = value; }
         }
         [ParserTarget("mapYn")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapYn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapYn
         {
             get { return Mod.vertexHeightMapYn; }
             set { Mod.vertexHeightMapYn = value; }
         }
         [ParserTarget("mapYp")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapYp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapYp
         {
             get { return Mod.vertexHeightMapYp; }
             set { Mod.vertexHeightMapYp = value; }
         }
         [ParserTarget("mapZn")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapZn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapZn
         {
             get { return Mod.vertexHeightMapZn; }
             set { Mod.vertexHeightMapZn = value; }
         }
         [ParserTarget("mapZp")]
-        public MapSOParserLarge<MapSODemandLarge> vertexHeightMapZp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapZp
         {
             get { return Mod.vertexHeightMapZp; }
             set { Mod.vertexHeightMapZp = value; }

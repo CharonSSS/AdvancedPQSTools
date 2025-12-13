@@ -1,11 +1,12 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using AdvancedPQSTools.OnDemand;
+using Kopernicus.Components;
 using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.ConfigParser.Enumerations;
-using Kopernicus.Configuration.Parsing;
-using Kopernicus.Components;
 using Kopernicus.Configuration.ModLoader;
+using Kopernicus.Configuration.Parsing;
+using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AdvancedPQSTools
 {
@@ -15,37 +16,37 @@ namespace AdvancedPQSTools
     {
         // The map textures for the planet
         [ParserTarget("mapXn")]
-        public MapSOParserRGB<MapSO> vertexColorMapXn
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapXn
         {
             get { return Mod.vertexColorMapXn; }
             set { Mod.vertexColorMapXn = value; }
         }
         [ParserTarget("mapXp")]
-        public MapSOParserRGB<MapSO> vertexColorMapXp
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapXp
         {
             get { return Mod.vertexColorMapXp; }
             set { Mod.vertexColorMapXp = value; }
         }
         [ParserTarget("mapYn")]
-        public MapSOParserRGB<MapSO> vertexColorMapYn
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapYn
         {
             get { return Mod.vertexColorMapYn; }
             set { Mod.vertexColorMapYn = value; }
         }
         [ParserTarget("mapYp")]
-        public MapSOParserRGB<MapSO> vertexColorMapYp
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapYp
         {
             get { return Mod.vertexColorMapYp; }
             set { Mod.vertexColorMapYp = value; }
         }
         [ParserTarget("mapZn")]
-        public MapSOParserRGB<MapSO> vertexColorMapZn
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapZn
         {
             get { return Mod.vertexColorMapZn; }
             set { Mod.vertexColorMapZn = value; }
         }
         [ParserTarget("mapZp")]
-        public MapSOParserRGB<MapSO> vertexColorMapZp
+        public MapSOTileParserRGB<MapSOTile> vertexColorMapZp
         {
             get { return Mod.vertexColorMapZp; }
             set { Mod.vertexColorMapZp = value; }

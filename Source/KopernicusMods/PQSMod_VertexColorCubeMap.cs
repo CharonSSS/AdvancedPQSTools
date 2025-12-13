@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdvancedPQSTools.OnDemand;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,12 @@ namespace AdvancedPQSTools
     public class PQSMod_VertexColorCubeMap : PQSMod
     {
 
-        public MapSO vertexColorMapXn;
-        public MapSO vertexColorMapXp;
-        public MapSO vertexColorMapYn;
-        public MapSO vertexColorMapYp;
-        public MapSO vertexColorMapZn;
-        public MapSO vertexColorMapZp;
+        public MapSOTile vertexColorMapXn;
+        public MapSOTile vertexColorMapXp;
+        public MapSOTile vertexColorMapYn;
+        public MapSOTile vertexColorMapYp;
+        public MapSOTile vertexColorMapZn;
+        public MapSOTile vertexColorMapZp;
         public float edgeClampRange;
         protected int tileWidth = 1;
         protected float pixelClamp;

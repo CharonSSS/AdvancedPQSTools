@@ -1,4 +1,5 @@
-﻿using Kopernicus.OnDemand;
+﻿using AdvancedPQSTools.OnDemand;
+using Kopernicus.OnDemand;
 using System;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace AdvancedPQSTools
         private int tileSetLength;
 
 
-        MapSODemand[] tileSet;
+        MapSOTile[] tileSet;
 
         public MapSOTileSet(string path, int size)
         {
@@ -34,14 +35,14 @@ namespace AdvancedPQSTools
             tileSetSize = size;
             tileSetLength = (size * size * 6);
             tileSetExtension = ".dds";//extension;
-            tileSet = new MapSODemand[tileSetLength];
+            tileSet = new MapSOTile[tileSetLength];
             for (int index = 0; index < tileSetLength; index++)
             {
                 int X = index % size;
                 int Y = (int)(Math.Floor((double)index / size) % size);
                 int F = (int)(Math.Floor((double)index / (size * size)));
 
-                tileSet[index] = ScriptableObject.CreateInstance<MapSODemand>();
+                tileSet[index] = ScriptableObject.CreateInstance<MapSOTile>();
                 Debug.Log(tileSetPath + "_" + F + "-" + Y + "-" + X + tileSetExtension);
                 tileSet[index].Depth = MapSO.MapDepth.RGB;
                 tileSet[index].Path = tileSetPath + "_" + F + "-" + Y + "-" + X + tileSetExtension;
@@ -50,7 +51,7 @@ namespace AdvancedPQSTools
         }
 
 
-        public MapSODemand GetTile(int face, double x, double y)
+        public MapSOTile GetTile(int face, double x, double y)
         {
             x = Math.Min(x, 0.99999);
             y = Math.Min(y, 0.99999);
@@ -69,13 +70,23 @@ namespace AdvancedPQSTools
 
         public Color GetPixelColor(int face, double x, double y)
         {
-            MapSODemand tile = GetTile(face, x, y);
+            MapSOTile tile = GetTile(face, x, y);
 
             double newX = (tileSetSize * x) - Math.Floor(tileSetSize * x);
             double newY = (tileSetSize * y) - Math.Floor(tileSetSize * y);
 
             tile.Load();
             return tile.GetPixelColor(newX, newY);
+        }
+        public MapSO.HeightAlpha GetPixelHeightAlpha(int face, double x, double y)
+        {
+            MapSOTile tile = GetTile(face, x, y);
+
+            double newX = (tileSetSize * x) - Math.Floor(tileSetSize * x);
+            double newY = (tileSetSize * y) - Math.Floor(tileSetSize * y);
+
+            tile.Load();
+            return tile.GetPixelHeightAlpha(newX, newY);
         }
     }
 }
