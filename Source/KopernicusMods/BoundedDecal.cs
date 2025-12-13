@@ -22,7 +22,7 @@ namespace AdvancedPQSTools
         }
         // The map texture for the planet
         [ParserTarget("heightMap")]
-        public MapSOParserLarge<MapSO> heightMap
+        public MapSOParserHeightAlpha<MapSO> heightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }
