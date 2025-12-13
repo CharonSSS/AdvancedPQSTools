@@ -85,7 +85,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="KSPTextureLoader">
-      <HintPath>E:\KSP Installs\Sol\GameData\KSPTextureLoader\Plugins\KSPTextureLoader.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
