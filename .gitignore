@@ -1,4 +1,6 @@
+.vs/
 /Source/.vs
+obj/
 Source/RealSolarSystem.csproj.user
 AdvancedPQSTools.zip
 GameData/AdvancedPQSTools/Plugins/0Harmony.dll
