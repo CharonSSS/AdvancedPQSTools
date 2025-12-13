@@ -3,6 +3,7 @@
  * Available from https://github.com/StollD/KopernicusExpansion-Continued
  */
 
+using AdvancedPQSTools.OnDemand;
 using Kopernicus.Configuration;
 using System;
 using UnityEngine;
@@ -15,8 +16,8 @@ namespace AdvancedPQSTools
     public class PQSMod_BoundedDecal : PQSMod
     {
         public bool allowScatters = true;
-        public MapSO heightMap;
-        public MapSO colorMap;
+        public MapSOTile heightMap;
+        public MapSOTile colorMap;
         public double heightMapOffset;
         public double heightMapDeformity;
         public double maxLong;

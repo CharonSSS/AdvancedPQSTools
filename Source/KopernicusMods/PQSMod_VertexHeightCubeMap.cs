@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AdvancedPQSTools.OnDemand;
+using Kopernicus.OnDemand;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Kopernicus.OnDemand;
 namespace AdvancedPQSTools
 {
     /// <summary>
@@ -11,12 +12,12 @@ namespace AdvancedPQSTools
     /// </summary>
     public class PQSMod_VertexHeightCubeMap : PQSMod_VertexHeightMap
     {
-        public MapSODemand vertexHeightMapXn;
-        public MapSODemand vertexHeightMapXp;
-        public MapSODemand vertexHeightMapYn;
-        public MapSODemand vertexHeightMapYp;
-        public MapSODemand vertexHeightMapZn;
-        public MapSODemand vertexHeightMapZp;
+        public MapSOTile vertexHeightMapXn;
+        public MapSOTile vertexHeightMapXp;
+        public MapSOTile vertexHeightMapYn;
+        public MapSOTile vertexHeightMapYp;
+        public MapSOTile vertexHeightMapZn;
+        public MapSOTile vertexHeightMapZp;
         public double edgeClampRange;
 
 

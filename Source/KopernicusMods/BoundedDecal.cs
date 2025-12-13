@@ -4,6 +4,7 @@
  */
 
 using System;
+using AdvancedPQSTools.OnDemand;
 using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.Configuration.ModLoader;
@@ -22,13 +23,13 @@ namespace AdvancedPQSTools
         }
         // The map texture for the planet
         [ParserTarget("heightMap")]
-        public MapSOParserHeightAlpha<MapSO> heightMap
+        public MapSOTileParserHeightAlpha<MapSOTile> heightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }
         }
         [ParserTarget("colorMap")]
-        public MapSOParserRGB<MapSO> colorMap
+        public MapSOTileParserRGB<MapSOTile> colorMap
         {
             get { return Mod.colorMap; }
             set { Mod.colorMap = value; }

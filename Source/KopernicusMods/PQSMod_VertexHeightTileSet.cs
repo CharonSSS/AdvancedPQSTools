@@ -3,10 +3,11 @@
 * Available from https://github.com/StollD/KopernicusExpansion-Continued
 */
 
+using AdvancedPQSTools.OnDemand;
 using Kopernicus.OnDemand;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using static Kopernicus.ConfigParser.ParserOptions;
 
 namespace AdvancedPQSTools
@@ -16,7 +17,7 @@ namespace AdvancedPQSTools
     /// </summary>
     public class PQSMod_VertexHeightTileSet : PQSMod_VertexHeightMap
     {
-        private MapSOLargeTileSet vertexHeightTileSet;
+        private MapSOTileSet vertexHeightTileSet;
         bool onStart = true;
         public List<string> path;
         public int size;
@@ -104,7 +105,7 @@ namespace AdvancedPQSTools
             return uvIndex;
         }
 
-        public MapSO.HeightAlpha GetCubeMapHeight(MapSOLargeTileSet vertexHeightTileSet, double u, double v)
+        public MapSO.HeightAlpha GetCubeMapHeight(MapSOTileSet vertexHeightTileSet, double u, double v)
         {
             MapSO.HeightAlpha ha = new MapSO.HeightAlpha();
             Vector3d coords = UVtoXYZ(u, v);
@@ -153,7 +154,7 @@ namespace AdvancedPQSTools
                 }
                 Debug.Log(path[0]);
                 Debug.Log(size);
-                vertexHeightTileSet = new MapSOLargeTileSet(path[0], size);
+                vertexHeightTileSet = new MapSOTileSet(path[0], size);
 
             }
         }

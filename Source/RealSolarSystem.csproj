@@ -46,7 +46,6 @@
     <Compile Include="GUI.cs" />
     <Compile Include="HarmonyPatcher.cs" />
     <Compile Include="Harmony\Vessel.cs" />
-    <Compile Include="OnDemand\MapSODemandLarge.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexDefineCoastSmooth.cs" />
@@ -63,7 +62,7 @@
     <Compile Include="KopernicusMods\PQSMod_VertexMitchellNetravaliHeightMap16.cs" />
     <Compile Include="KopernicusMods\VertexHeightTileSet.cs" />
     <Compile Include="KopernicusMods\VertexMitchellNetravaliHeightMap16.cs" />
-    <Compile Include="OnDemand\MapSOLargeTileSet.cs" />
+    <Compile Include="OnDemand\MapSOTile.cs" />
     <Compile Include="OnDemand\MapSOTileSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunwayFix.cs" />
@@ -84,6 +83,9 @@
     </Reference>
     <Reference Include="Kopernicus.Parser">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="KSPTextureLoader">
+      <HintPath>E:\KSP Installs\Sol\GameData\KSPTextureLoader\Plugins\KSPTextureLoader.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>

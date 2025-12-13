@@ -1,4 +1,5 @@
-﻿using Kopernicus.Components;
+﻿using AdvancedPQSTools.OnDemand;
+using Kopernicus.Components;
 using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 using Kopernicus.ConfigParser.Enumerations;
@@ -20,37 +21,37 @@ namespace AdvancedPQSTools
     {
         // The map textures for the planet
         [ParserTarget("mapXn")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapXn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapXn
         {
             get { return Mod.vertexHeightMapXn; }
             set { Mod.vertexHeightMapXn = value; }
         }
         [ParserTarget("mapXp")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapXp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapXp
         {
             get { return Mod.vertexHeightMapXp; }
             set { Mod.vertexHeightMapXp = value; }
         }
         [ParserTarget("mapYn")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapYn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapYn
         {
             get { return Mod.vertexHeightMapYn; }
             set { Mod.vertexHeightMapYn = value; }
         }
         [ParserTarget("mapYp")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapYp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapYp
         {
             get { return Mod.vertexHeightMapYp; }
             set { Mod.vertexHeightMapYp = value; }
         }
         [ParserTarget("mapZn")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapZn
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapZn
         {
             get { return Mod.vertexHeightMapZn; }
             set { Mod.vertexHeightMapZn = value; }
         }
         [ParserTarget("mapZp")]
-        public MapSOParserHeightAlpha<MapSODemand> vertexHeightMapZp
+        public MapSOTileParserHeightAlpha<MapSOTile> vertexHeightMapZp
         {
             get { return Mod.vertexHeightMapZp; }
             set { Mod.vertexHeightMapZp = value; }
