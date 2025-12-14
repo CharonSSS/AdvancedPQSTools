@@ -7,6 +7,7 @@ using Kopernicus.Configuration.Parsing;
 using Kopernicus.ConfigParser.Enumerations;
 using UnityEngine;
 using AdvancedPQSTools;
+using Kopernicus.OnDemand;
 
 
 /*
@@ -48,7 +49,7 @@ namespace AdvancedPQSTools
     {
         // The map texture for the planet
         [ParserTarget("map")]
-        public MapSOParserLarge<MapSO> HeightMap
+        public MapSOParserHeightAlpha<MapSO> HeightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }

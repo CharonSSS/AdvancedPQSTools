@@ -12,8 +12,11 @@ GameData/AdvancedPQSTools/Plugins/0Harmony.dll
 /Source/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /Source/obj/Debug/RealSolarSystem.csproj.AssemblyReference.cache
 *.dll
+*.pdb
 *.cache
 /Source/obj/Release/RealSolarSystem.csproj.AssemblyReference.cache
 *.txt
 /Source/.vs/RealSolarSystem/v17/.suo
 /Source/.vs/RealSolarSystem/v17/DocumentLayout.backup.json
+/Source/obj/Debug
+/GameData/AdvancedPQSTools/Plugins

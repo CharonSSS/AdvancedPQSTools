@@ -47,7 +47,6 @@
     <Compile Include="HarmonyPatcher.cs" />
     <Compile Include="Harmony\StockPQS.cs" />
     <Compile Include="Harmony\Vessel.cs" />
-    <Compile Include="KopernicusMods\MapSODemandLarge.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexDefineCoastSmooth.cs" />
@@ -64,7 +63,7 @@
     <Compile Include="KopernicusMods\PQSMod_VertexMitchellNetravaliHeightMap16.cs" />
     <Compile Include="KopernicusMods\VertexHeightTileSet.cs" />
     <Compile Include="KopernicusMods\VertexMitchellNetravaliHeightMap16.cs" />
-    <Compile Include="OnDemand\MapSOLargeTileSet.cs" />
+    <Compile Include="OnDemand\MapSOTile.cs" />
     <Compile Include="OnDemand\MapSOTileSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunwayFix.cs" />
@@ -91,7 +90,12 @@
     <Reference Include="Kopernicus.Parser">
       <HintPath>$(KSPRoot)\GameData\Kopernicus\Plugins\Kopernicus.Parser.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="KSPTextureLoader">
+      <HintPath>$(KSPRoot)\GameData\KSPTextureLoader\Plugins\KSPTextureLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
