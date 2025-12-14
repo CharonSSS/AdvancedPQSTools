@@ -78,30 +78,30 @@ namespace AdvancedPQSTools.Harmony
             }
 
             foreach (ConfigNode node in root.GetNodes("Body"))
+            {
+                PQSSettings setting = new PQSSettings();
+
+                node.TryGetValue("name", ref setting.Body);
+
+                if (node.HasValue("minLevel") && int.TryParse(node.GetValue("minLevel"), out int parsedMin))
+                    setting.minLevel = parsedMin;
+
+                if (node.HasValue("maxLevel") && int.TryParse(node.GetValue("maxLevel"), out int parsedMax))
+                    setting.maxLevel = parsedMax;
+
+                if (node.HasValue("minDetailDistance") && double.TryParse(node.GetValue("minDetailDistance"), out double parsedDistance))
+                    setting.minDetailDistance = parsedDistance;
+
+                if (!string.IsNullOrEmpty(setting.Body))
                 {
-                    PQSSettings setting = new PQSSettings();
-
-                    node.TryGetValue("name", ref setting.Body);
-
-                    if (node.HasValue("minLevel") && int.TryParse(node.GetValue("minLevel"), out int parsedMin))
-                        setting.minLevel = parsedMin;
-
-                    if (node.HasValue("maxLevel") && int.TryParse(node.GetValue("maxLevel"), out int parsedMax))
-                        setting.maxLevel = parsedMax;
-
-                    if (node.HasValue("minDetailDistance") && double.TryParse(node.GetValue("minDetailDistance"), out double parsedDistance))
-                        setting.minDetailDistance = parsedDistance;
-
-                    if (!string.IsNullOrEmpty(setting.Body))
-                    {
-                        //Debug.Log($"[StockPQSPatches] Loaded config for body: {setting.Body}");
-                        Settings.Add(setting);
-                    }
-                    else
-                    {
-                        //Debug.LogWarning($"[StockPQSPatches] Config empty");
-                    }
+                    //Debug.Log($"[StockPQSPatches] Loaded config for body: {setting.Body}");
+                    Settings.Add(setting);
                 }
+                else
+                {
+                    //Debug.LogWarning($"[StockPQSPatches] Config empty");
+                }
+            }
 
             if (Settings.Count == 0)
                 Debug.LogWarning("[StockPQSPatches] Config node found, but no bodies found.");
