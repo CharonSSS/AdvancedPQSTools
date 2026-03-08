@@ -12,6 +12,7 @@
     <RootNamespace>AdvancedPQSTools</RootNamespace>
     <AssemblyName>AdvancedPQSTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Version>1.5.0</Version>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -47,6 +48,8 @@
     <Compile Include="HarmonyPatcher.cs" />
     <Compile Include="Harmony\StockPQS.cs" />
     <Compile Include="Harmony\Vessel.cs" />
+    <Compile Include="KopernicusMods\BoundedDecalBicubic.cs" />
+    <Compile Include="KopernicusMods\PQSMod_BoundedDecalBicubic.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexDefineCoastSmooth.cs" />
