@@ -16,37 +16,37 @@ namespace AdvancedPQSTools
     {
         // The map textures for the planet
         [ParserTarget("mapXn")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapXn
+        public MapSOParserRGB<MapSOTile> vertexColorMapXn
         {
             get { return Mod.vertexColorMapXn; }
             set { Mod.vertexColorMapXn = value; }
         }
         [ParserTarget("mapXp")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapXp
+        public MapSOParserRGB<MapSOTile> vertexColorMapXp
         {
             get { return Mod.vertexColorMapXp; }
             set { Mod.vertexColorMapXp = value; }
         }
         [ParserTarget("mapYn")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapYn
+        public MapSOParserRGB<MapSOTile> vertexColorMapYn
         {
             get { return Mod.vertexColorMapYn; }
             set { Mod.vertexColorMapYn = value; }
         }
         [ParserTarget("mapYp")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapYp
+        public MapSOParserRGB<MapSOTile> vertexColorMapYp
         {
             get { return Mod.vertexColorMapYp; }
             set { Mod.vertexColorMapYp = value; }
         }
         [ParserTarget("mapZn")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapZn
+        public MapSOParserRGB<MapSOTile> vertexColorMapZn
         {
             get { return Mod.vertexColorMapZn; }
             set { Mod.vertexColorMapZn = value; }
         }
         [ParserTarget("mapZp")]
-        public MapSOTileParserRGB<MapSOTile> vertexColorMapZp
+        public MapSOParserRGB<MapSOTile> vertexColorMapZp
         {
             get { return Mod.vertexColorMapZp; }
             set { Mod.vertexColorMapZp = value; }
