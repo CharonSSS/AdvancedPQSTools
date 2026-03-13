@@ -23,13 +23,13 @@ namespace AdvancedPQSTools
         }
         // The map texture for the planet
         [ParserTarget("heightMap")]
-        public MapSOTileParserHeightAlpha<MapSOTile> heightMap
+        public MapSOParserHeightAlpha<MapSOTile> heightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }
         }
         [ParserTarget("colorMap")]
-        public MapSOTileParserRGB<MapSOTile> colorMap
+        public MapSOParserRGB<MapSOTile> colorMap
         {
             get { return Mod.colorMap; }
             set { Mod.colorMap = value; }
