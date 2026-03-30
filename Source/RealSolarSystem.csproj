@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdvancedPQSTools</RootNamespace>
     <AssemblyName>AdvancedPQSTools</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <Version>1.5.0</Version>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,24 +48,28 @@
     <Compile Include="HarmonyPatcher.cs" />
     <Compile Include="Harmony\StockPQS.cs" />
     <Compile Include="Harmony\Vessel.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_BoundedDecal.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_BoundedDecalBicubic.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_VertexColorCubeMap.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_VertexDefineCoastSmooth.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_VertexHeightCubeMap.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_VertexHeightMapBicubic.cs" />
     <Compile Include="KopernicusMods\BoundedDecalBicubic.cs" />
     <Compile Include="KopernicusMods\PQSMod_BoundedDecalBicubic.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexDefineCoastSmooth.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexHeightCubeMap.cs" />
-    <Compile Include="KopernicusMods\PQSMod_VertexHeightMap16Grayscale.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexHeightTileSet.cs" />
     <Compile Include="KopernicusMods\VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\VertexDefineCoastSmooth.cs" />
     <Compile Include="KopernicusMods\VertexHeightCubeMap.cs" />
-    <Compile Include="KopernicusMods\VertexHeightMap16Grayscale.cs" />
     <Compile Include="KopernicusMods\PQSMod_BoundedDecal.cs" />
     <Compile Include="KopernicusMods\BoundedDecal.cs" />
-    <Compile Include="KopernicusMods\PQSMod_VertexMitchellNetravaliHeightMap16.cs" />
+    <Compile Include="KopernicusMods\PQSMod_VertexHeightMapBicubic.cs" />
     <Compile Include="KopernicusMods\VertexHeightTileSet.cs" />
-    <Compile Include="KopernicusMods\VertexMitchellNetravaliHeightMap16.cs" />
+    <Compile Include="KopernicusMods\VertexHeightMapBicubic.cs" />
     <Compile Include="OnDemand\MapSOTile.cs" />
     <Compile Include="OnDemand\MapSOTileSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +91,15 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="BurstPQS">
+      <HintPath>$(KSPRoot)\GameData\BurstPQS\Plugins\BurstPQS.dll</HintPath>
+    </Reference>
+    <Reference Include="BurstPQS.Kopernicus">
+      <HintPath>$(KSPRoot)\GameData\BurstPQS\Plugins\BurstPQS.Kopernicus.dll</HintPath>
+    </Reference>
+    <Reference Include="BurstPQS.ParallaxContinued">
+      <HintPath>$(KSPRoot)\GameData\BurstPQS\Plugins\BurstPQS.ParallaxContinued.dll</HintPath>
+    </Reference>
     <Reference Include="Kopernicus">
       <HintPath>$(KSPRoot)\GameData\Kopernicus\Plugins\Kopernicus.dll</HintPath>
     </Reference>
@@ -95,6 +108,9 @@
     </Reference>
     <Reference Include="KSPTextureLoader">
       <HintPath>$(KSPRoot)\GameData\KSPTextureLoader\Plugins\KSPTextureLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>$(KSPRoot)\GameData\000_KSPBurst\Plugins\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -116,7 +132,7 @@
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -45,11 +45,11 @@ namespace AdvancedPQSTools
 
     [RequireConfigType(ConfigType.Node)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public class VertexMitchellNetravaliHeightMap16 : ModLoader<PQSMod_VertexMitchellNetravaliHeightMap16>
+    public class VertexHeightMapBicubic : ModLoader<PQSMod_VertexHeightMapBicubic>
     {
         // The map texture for the planet
         [ParserTarget("map")]
-        public MapSOParserHeightAlpha<MapSO> HeightMap
+        public MapSOParserGreyScale<MapSO> HeightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }

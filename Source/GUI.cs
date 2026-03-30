@@ -51,7 +51,6 @@ namespace AdvancedPQSTools
         private PQSMod_QuadEnhanceCoast _pModEnhance = null;
         private PQSMod_VertexDefineCoastSmooth _pModRssDefine = null;
         private PQSMod_VertexHeightNoiseVertHeight _pModHeightNoise = null;
-        private PQSMod_VertexHeightMap16Grayscale _pModRssHMap = null;
 
         public void Update()
         {
@@ -188,7 +187,6 @@ namespace AdvancedPQSTools
                 _pModEnhance = (PQSMod_QuadEnhanceCoast)_modList.FirstOrDefault(t => t is PQSMod_QuadEnhanceCoast);
                 _pModRssDefine = (PQSMod_VertexDefineCoastSmooth)_modList.FirstOrDefault(t => t is PQSMod_VertexDefineCoastSmooth);
                 _pModHeightNoise = (PQSMod_VertexHeightNoiseVertHeight)_modList.FirstOrDefault(t => t is PQSMod_VertexHeightNoiseVertHeight);
-                _pModRssHMap = (PQSMod_VertexHeightMap16Grayscale)_modList.FirstOrDefault(t => t is PQSMod_VertexHeightMap16Grayscale);
             }
 
             PQSCache.PQSSpherePreset preset = PQSCache.PresetList?.GetPreset(pqs.gameObject.name);

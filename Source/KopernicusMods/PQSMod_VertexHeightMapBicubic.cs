@@ -37,7 +37,7 @@ namespace AdvancedPQSTools
     /// <summary>
     /// PQSMod that adds Bilineal Filtering for the stock VertexHeightMap PQSMod
     /// </summary>
-    public class PQSMod_VertexMitchellNetravaliHeightMap16 : PQSMod_VertexHeightMap
+    public class PQSMod_VertexHeightMapBicubic : PQSMod_VertexHeightMap
     {
         /// <summary> B value for the Mitchell-Netravali Filter </summary>
         public double B = 1.0f;
@@ -113,11 +113,6 @@ namespace AdvancedPQSTools
             return value < min ? min : (value >= max ? max - 1 : value);
         }
 
-        protected double HeightAlphaToDouble(MapSO.HeightAlpha ha)
-        {
-            return (ha.height + ha.alpha * (double)Byte.MaxValue) / (double)(Byte.MaxValue + 1);
-        }
-
         public double InterpolateHeights(double u, double v)
         {
             if (!hasConstantsPrecalculated)
@@ -142,7 +137,7 @@ namespace AdvancedPQSTools
                 for (int i = -1; i < 3; i++)
                 {
                     Int32 x = ClampLoop(x0 + i, 0, heightMap.Width);
-                    PX[i + 1] = HeightAlphaToDouble(heightMap.GetPixelHeightAlpha(x, y));
+                    PX[i + 1] = heightMap.GetPixelFloat(x, y);
                 }
                 PY[j + 1] = RunMitchellNetravali(PX[0], PX[1], PX[2], PX[3], uD);
                 //PY[j + 1] = PX[0];

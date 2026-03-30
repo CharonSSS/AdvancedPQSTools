@@ -1,4 +1,4 @@
-﻿/* 
+﻿/*
  * This code is adapted from KopernicusExpansion-Continued
  * Available from https://github.com/StollD/KopernicusExpansion-Continued
  */
@@ -23,7 +23,7 @@ namespace AdvancedPQSTools
         }
         // The map texture for the planet
         [ParserTarget("heightMap")]
-        public MapSOTileParserHeightAlpha<MapSOTile> heightMap
+        public MapSOTileParserGrayScale<MapSOTile> heightMap
         {
             get { return Mod.heightMap; }
             set { Mod.heightMap = value; }
