@@ -55,8 +55,8 @@ namespace AdvancedPQSTools
                 minV = minV,
                 rangeU = rangeU,
                 rangeV = rangeV,
-                heightMapOffset = Mod.heightMapOffset,
-                heightMapDeformity = Mod.heightMapDeformity,
+                decalMapOffset = Mod.decalMapOffset,
+                decalMapDeformity = Mod.decalMapDeformity,
                 sphereRadius = Mod.sphere.radius,
                 allowScatters = Mod.allowScatters,
                 hasHeightMap = hasHeightMap,
@@ -87,8 +87,8 @@ namespace AdvancedPQSTools
             public double rangeV;
 
             // ─── Height parameters ───────────────────────────────────────
-            public double heightMapOffset;
-            public double heightMapDeformity;
+            public double decalMapOffset;
+            public double decalMapDeformity;
             public double sphereRadius;
 
             // ─── Feature flags ───────────────────────────────────────────
@@ -284,8 +284,8 @@ namespace AdvancedPQSTools
 
                     if (height != 0.0)
                     {
-                        data.vertHeight[i] = heightMapOffset
-                            + heightMapDeformity * height
+                        data.vertHeight[i] = decalMapOffset
+                            + decalMapDeformity * height
                             + sphereRadius;
                     }
                 }

@@ -37,18 +37,18 @@ namespace AdvancedPQSTools
 
         // Height map offset
         [ParserTarget("offset")]
-        public NumericParser<Double> heightMapOffset
+        public NumericParser<Double> decalMapOffset
         {
-            get { return Mod.heightMapOffset; }
-            set { Mod.heightMapOffset = value; }
+            get { return Mod.decalMapOffset; }
+            set { Mod.decalMapOffset = value; }
         }
 
         // Height map offset
         [ParserTarget("deformity")]
-        public NumericParser<Double> heightMapDeformity
+        public NumericParser<Double> decalMapDeformity
         {
-            get { return Mod.heightMapDeformity; }
-            set { Mod.heightMapDeformity = value; }
+            get { return Mod.decalMapDeformity; }
+            set { Mod.decalMapDeformity = value; }
         }
 
         // Max Longitude of the decal

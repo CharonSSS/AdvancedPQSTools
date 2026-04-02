@@ -18,8 +18,8 @@ namespace AdvancedPQSTools
         public bool allowScatters = true;
         public MapSOTile heightMap;
         public MapSOTile colorMap;
-        public double heightMapOffset;
-        public double heightMapDeformity;
+        public double decalMapOffset;
+        public double decalMapDeformity;
         public double maxLong;
         public double minLong;
         public double maxLat;
@@ -60,7 +60,7 @@ namespace AdvancedPQSTools
                     // Apply it
                     if (height != 0)
                     {
-                        data.vertHeight = heightMapOffset + heightMapDeformity * height + sphere.radius;
+                        data.vertHeight = decalMapOffset + decalMapDeformity * height + sphere.radius;
                     }
                 }
             }
