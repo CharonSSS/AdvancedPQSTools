@@ -40,8 +40,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("@MAJOR@.@MINOR@.@PATCH@.@BUILD@")]
 [assembly: AssemblyFileVersion("@MAJOR@.@MINOR@.@PATCH@.@BUILD@")]
 #else
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.6.1.0")]
+[assembly: AssemblyFileVersion("1.6.1.0")]
 #endif
 
 [assembly: KSPAssemblyDependency("Kopernicus", 1, 0)]
@@ -49,3 +49,4 @@ using System.Runtime.InteropServices;
 [assembly: KSPAssemblyDependency("ModuleManager", 1, 0)]
 [assembly: KSPAssemblyDependency("HarmonyKSP", 1, 0)]
 [assembly: KSPAssemblyDependency("BurstPQS", 0, 0)]
+[assembly: KSPAssemblyDependency("KSPBurst", 0, 0)]

@@ -1,14 +1,11 @@
 ﻿using AdvancedPQSTools.OnDemand;
-using Kopernicus.OnDemand;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace AdvancedPQSTools
 {
     /// <summary>
-    /// A heightmap PQSMod that can parse encoded 16bpp cubemap textures for an effective resolution of 65536x32768
+    /// A heightmap PQSMod that can parse cubemap textures for an effective resolution of 65536x32768.
+    /// Uses manual bilinear interpolation with cross-face boundary sampling.
     /// </summary>
     public class PQSMod_VertexHeightCubeMap : PQSMod_VertexHeightMap
     {
@@ -20,141 +17,215 @@ namespace AdvancedPQSTools
         public MapSOTile vertexHeightMapZp;
         public double edgeClampRange;
 
-
-        public Vector3d UVtoXYZ(double u, double v)
+        private static void FaceUVToDirection(
+            int faceIndex, double faceU, double faceV,
+            out double dx, out double dy, out double dz)
         {
-            Vector3d coords = new Vector3d();
-
-            double theta = 2.0 * Math.PI * u;
-            double phi = Math.PI * v;
-
-            coords.x = (float)(Math.Cos(theta) * Math.Sin(phi));
-            coords.y = (float)(-Math.Cos(phi));
-            coords.z = (float)(Math.Sin(theta) * Math.Sin(phi));
-
-            return coords;
+            dx = 0; dy = 0; dz = 0;
+            switch (faceIndex)
+            {
+                case 0: dx = -1; dz = faceU; dy = faceV; break;
+                case 1: dx = 1; dz = -faceU; dy = faceV; break;
+                case 2: dy = -1; dx = faceU; dz = faceV; break;
+                case 3: dy = 1; dx = faceU; dz = -faceV; break;
+                case 4: dz = -1; dx = -faceU; dy = faceV; break;
+                default: dz = 1; dx = faceU; dy = faceV; break;
+            }
         }
-        public Vector3d XYZtoFaceUVI(Vector3d coords)
-        {
-            //X = U, Y = V, Z = FaceIndex 
-            Vector3d uvIndex = new Vector3d();
-            Vector3d absCoords = new Vector3d(Math.Abs(coords.x), Math.Abs(coords.y), Math.Abs(coords.z));
 
-            Boolean isXPositive = coords.x > 0 ? true : false;
-            Boolean isYPositive = coords.y > 0 ? true : false;
-            Boolean isZPositive = coords.z > 0 ? true : false;
+        private static void ProjectToFacePixel(
+            double dx, double dy, double dz,
+            int faceWidth, int faceHeight,
+            out int faceIndex, out int px, out int py)
+        {
+            double ax = Math.Abs(dx);
+            double ay = Math.Abs(dy);
+            double az = Math.Abs(dz);
+
+            bool isXPos = dx > 0;
+            bool isYPos = dy > 0;
+            bool isZPos = dz > 0;
 
             double maxAxis = 1;
+            double faceU = 0, faceV = 0;
+            faceIndex = 0;
 
-            //Negative X
-            if (!isXPositive && absCoords.x >= absCoords.y && absCoords.x >= absCoords.z)
+            if (!isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = dz; faceV = dy; faceIndex = 0; }
+            if (isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = -dz; faceV = dy; faceIndex = 1; }
+            if (!isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = dx; faceV = dz; faceIndex = 2; }
+            if (isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = dx; faceV = -dz; faceIndex = 3; }
+            if (!isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = -dx; faceV = dy; faceIndex = 4; }
+            if (isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = dx; faceV = dy; faceIndex = 5; }
+
+            double su = 0.5 * (faceU / maxAxis + 1.0);
+            double sv = 0.5 * (faceV / maxAxis + 1.0);
+
+            double texU, texV;
+            switch (faceIndex)
             {
-                maxAxis = absCoords.x;
-                uvIndex.x = coords.z;
-                uvIndex.y = coords.y;
-                uvIndex.z = 0;
-            }
-            //Positive X
-            if (isXPositive && absCoords.x >= absCoords.y && absCoords.x >= absCoords.z)
-            {
-                maxAxis = absCoords.x;
-                uvIndex.x = -coords.z;
-                uvIndex.y = coords.y;
-                uvIndex.z = 1;
-            }
-            //Negative Y
-            if (!isYPositive && absCoords.y >= absCoords.x && absCoords.y >= absCoords.z)
-            {
-                maxAxis = absCoords.y;
-                uvIndex.x = coords.x;
-                uvIndex.y = coords.z;
-                uvIndex.z = 2;
-            }
-            //Positive Y
-            if (isYPositive && absCoords.y >= absCoords.x && absCoords.y >= absCoords.z)
-            {
-                maxAxis = absCoords.y;
-                uvIndex.x = coords.x;
-                uvIndex.y = -coords.z;
-                uvIndex.z = 3;
-            }
-            //Negative Z
-            if (!isZPositive && absCoords.z >= absCoords.x && absCoords.z >= absCoords.y)
-            {
-                maxAxis = absCoords.z;
-                uvIndex.x = -coords.x;
-                uvIndex.y = coords.y;
-                uvIndex.z = 4;
-            }
-            if (isZPositive && absCoords.z >= absCoords.x && absCoords.z >= absCoords.y)
-            {
-                maxAxis = absCoords.z;
-                uvIndex.x = coords.x;
-                uvIndex.y = coords.y;
-                uvIndex.z = 5;
+                case 0: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 1: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 2: texU = sv; texV = 1.0 - su; break;
+                case 3: texU = 1.0 - sv; texV = su; break;
+                case 4: texU = 1.0 - su; texV = 1.0 - sv; break;
+                default: texU = 1.0 - su; texV = 1.0 - sv; break;
             }
 
-            uvIndex.x = 0.5f * (uvIndex.x / maxAxis + 1.0f);
-            uvIndex.y = 0.5f * (uvIndex.y / maxAxis + 1.0f);
+            if (texU < 0.0) texU = 0.0;
+            if (texU > 1.0) texU = 1.0;
+            if (texV < 0.0) texV = 0.0;
+            if (texV > 1.0) texV = 1.0;
 
+            px = (int)(texU * (faceWidth - 1) + 0.5);
+            py = (int)(texV * (faceHeight - 1) + 0.5);
 
-            return uvIndex;
+            if (px < 0) px = 0;
+            if (px >= faceWidth) px = faceWidth - 1;
+            if (py < 0) py = 0;
+            if (py >= faceHeight) py = faceHeight - 1;
         }
 
-        public MapSO.HeightAlpha GetCubeMapHeight(MapSO texXn, MapSO texXp, MapSO texYn, MapSO texYp, MapSO texZn, MapSO texZp, double u, double v)
+        private double SampleFace(int faceIndex, int px, int py)
         {
-            MapSO.HeightAlpha ha = new MapSO.HeightAlpha();
-            Vector3d coords = UVtoXYZ(u, v);
-            Vector3d uvIndex = XYZtoFaceUVI(coords);
+            switch (faceIndex)
+            {
+                case 0: return vertexHeightMapZn.GetPixelFloat(px, py);
+                case 1: return vertexHeightMapZp.GetPixelFloat(px, py);
+                case 2: return vertexHeightMapYn.GetPixelFloat(px, py);
+                case 3: return vertexHeightMapYp.GetPixelFloat(px, py);
+                case 4: return vertexHeightMapXn.GetPixelFloat(px, py);
+                default: return vertexHeightMapXp.GetPixelFloat(px, py);
+            }
+        }
 
-            double pixelClamp = 1.0d / (texXn.Width / edgeClampRange);
-            //Clamp values near edges to prevent wrapping
-            uvIndex.x = Math.Max(uvIndex.x, pixelClamp);
-            uvIndex.x = Math.Min(uvIndex.x, 1 - pixelClamp);
-            uvIndex.y = Math.Max(uvIndex.y, pixelClamp);
-            uvIndex.y = Math.Min(uvIndex.y, 1 - pixelClamp);
+        private double SampleVia3D(
+            int srcFace, int px, int py, int faceWidth, int faceHeight)
+        {
+            double texU = (double)px / (faceWidth - 1);
+            double texV = (double)py / (faceHeight - 1);
 
-            //Xn -> Zn
-            if (uvIndex.z == 0)
-                return texZn.GetPixelHeightAlpha((1 - uvIndex.x), (1 - uvIndex.y));
+            double su, sv;
+            switch (srcFace)
+            {
+                case 0: su = 1.0 - texU; sv = 1.0 - texV; break;
+                case 1: su = 1.0 - texU; sv = 1.0 - texV; break;
+                case 2: su = 1.0 - texV; sv = texU; break;
+                case 3: su = texV; sv = 1.0 - texU; break;
+                case 4: su = 1.0 - texU; sv = 1.0 - texV; break;
+                default: su = 1.0 - texU; sv = 1.0 - texV; break;
+            }
 
-            if (uvIndex.z == 1)
-                return texZp.GetPixelHeightAlpha((1 - uvIndex.x), (1 - uvIndex.y));
+            double normU = su * 2.0 - 1.0;
+            double normV = sv * 2.0 - 1.0;
 
-            if (uvIndex.z == 2)
-                return texYn.GetPixelHeightAlpha((uvIndex.y), (1 - uvIndex.x));
+            double dx, dy, dz;
+            FaceUVToDirection(srcFace, normU, normV, out dx, out dy, out dz);
 
-            if (uvIndex.z == 3)
-                return texYp.GetPixelHeightAlpha((1 - uvIndex.y), (uvIndex.x));
+            int newFace, newPx, newPy;
+            ProjectToFacePixel(dx, dy, dz, faceWidth, faceHeight,
+                out newFace, out newPx, out newPy);
 
-            if (uvIndex.z == 4)
-                return texXn.GetPixelHeightAlpha((1 - uvIndex.x), (1 - uvIndex.y));
-
-            if (uvIndex.z == 5)
-                return texXp.GetPixelHeightAlpha((1 - uvIndex.x), (1 - uvIndex.y));
-
-
-            return ha;
+            return SampleFace(newFace, newPx, newPy);
         }
 
         public override void OnVertexBuildHeight(PQS.VertexBuildData data)
         {
-            // Get the HeightAlpha, not the Float-Value from the Map
-            // Clamp the v value to just shy of 1 to avoid sampling issues around the north pole.
-            vertexHeightMapXn.Load();
-            vertexHeightMapXp.Load();
-            vertexHeightMapYn.Load();
-            vertexHeightMapYp.Load();
-            vertexHeightMapZn.Load();
-            vertexHeightMapZp.Load();
+            int faceWidth = vertexHeightMapZn.Width;
+            int faceHeight = vertexHeightMapZn.Height;
 
+            double u = data.u;
+            double v = data.v;
 
-            MapSO.HeightAlpha ha = GetCubeMapHeight(vertexHeightMapXn, vertexHeightMapXp, vertexHeightMapYn, vertexHeightMapYp, vertexHeightMapZn, vertexHeightMapZp, data.u, data.v);
+            // ── UVtoXYZ ──────────────────────────────────────────────
+            double theta = 2.0 * Math.PI * u;
+            double phi = Math.PI * v;
 
-            // Get the height data from the terrain
-            Double height = (ha.height + ha.alpha * (Double)Byte.MaxValue) / (Double)(Byte.MaxValue + 1);
+            float cx = (float)(Math.Cos(theta) * Math.Sin(phi));
+            float cy = (float)(-Math.Cos(phi));
+            float cz = (float)(Math.Sin(theta) * Math.Sin(phi));
 
-            // Apply it
+            // ── XYZtoFaceUVI ─────────────────────────────────────────
+            float ax = Math.Abs(cx);
+            float ay = Math.Abs(cy);
+            float az = Math.Abs(cz);
+
+            bool isXPos = cx > 0;
+            bool isYPos = cy > 0;
+            bool isZPos = cz > 0;
+
+            float maxAxis = 1;
+            float faceU = 0, faceV = 0;
+            int primaryFace = 0;
+
+            if (!isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = cz; faceV = cy; primaryFace = 0; }
+            if (isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = -cz; faceV = cy; primaryFace = 1; }
+            if (!isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = cx; faceV = cz; primaryFace = 2; }
+            if (isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = cx; faceV = -cz; primaryFace = 3; }
+            if (!isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = -cx; faceV = cy; primaryFace = 4; }
+            if (isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = cx; faceV = cy; primaryFace = 5; }
+
+            double su = 0.5 * (faceU / maxAxis + 1.0);
+            double sv = 0.5 * (faceV / maxAxis + 1.0);
+
+            double texU, texV;
+            switch (primaryFace)
+            {
+                case 0: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 1: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 2: texU = sv; texV = 1.0 - su; break;
+                case 3: texU = 1.0 - sv; texV = su; break;
+                case 4: texU = 1.0 - su; texV = 1.0 - sv; break;
+                default: texU = 1.0 - su; texV = 1.0 - sv; break;
+            }
+
+            double px = texU * (faceWidth - 1);
+            double py = texV * (faceHeight - 1);
+
+            int x0 = (int)Math.Floor(px);
+            int y0 = (int)Math.Floor(py);
+            int x1 = x0 + 1;
+            int y1 = y0 + 1;
+
+            double fx = px - x0;
+            double fy = py - y0;
+
+            // ── Sample 4 bilinear corners with cross-face fallback ───
+            double p00 = (x0 >= 0 && x0 < faceWidth && y0 >= 0 && y0 < faceHeight)
+                ? SampleFace(primaryFace, x0, y0)
+                : SampleVia3D(primaryFace, x0, y0, faceWidth, faceHeight);
+
+            double p10 = (x1 >= 0 && x1 < faceWidth && y0 >= 0 && y0 < faceHeight)
+                ? SampleFace(primaryFace, x1, y0)
+                : SampleVia3D(primaryFace, x1, y0, faceWidth, faceHeight);
+
+            double p01 = (x0 >= 0 && x0 < faceWidth && y1 >= 0 && y1 < faceHeight)
+                ? SampleFace(primaryFace, x0, y1)
+                : SampleVia3D(primaryFace, x0, y1, faceWidth, faceHeight);
+
+            double p11 = (x1 >= 0 && x1 < faceWidth && y1 >= 0 && y1 < faceHeight)
+                ? SampleFace(primaryFace, x1, y1)
+                : SampleVia3D(primaryFace, x1, y1, faceWidth, faceHeight);
+
+            double height = p00 * (1.0 - fx) * (1.0 - fy)
+                          + p10 * fx * (1.0 - fy)
+                          + p01 * (1.0 - fx) * fy
+                          + p11 * fx * fy;
+
+            if (Double.IsNaN(height) || Double.IsInfinity(height))
+                return;
+
             data.vertHeight += heightMapOffset + heightMapDeformity * height;
         }
     }
