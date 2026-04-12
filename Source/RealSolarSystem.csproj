@@ -50,12 +50,15 @@
     <Compile Include="Harmony\Vessel.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_BoundedDecal.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_BoundedDecalBicubic.cs" />
+    <Compile Include="KopernicusMods\BatchPQSMod_BoundedDecalSet.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_VertexDefineCoastSmooth.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_VertexHeightCubeMap.cs" />
     <Compile Include="KopernicusMods\BatchPQSMod_VertexHeightMapBicubic.cs" />
     <Compile Include="KopernicusMods\BoundedDecalBicubic.cs" />
+    <Compile Include="KopernicusMods\BoundedDecalSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_BoundedDecalBicubic.cs" />
+    <Compile Include="KopernicusMods\PQSMod_BoundedDecalSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorCubeMap.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexColorTileSet.cs" />
     <Compile Include="KopernicusMods\PQSMod_VertexDefineCoastSmooth.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="KopernicusMods\PQSMod_VertexHeightMapBicubic.cs" />
     <Compile Include="KopernicusMods\VertexHeightTileSet.cs" />
     <Compile Include="KopernicusMods\VertexHeightMapBicubic.cs" />
+    <Compile Include="OnDemand\DecalData.cs" />
     <Compile Include="OnDemand\MapSOTile.cs" />
     <Compile Include="OnDemand\MapSOTileSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
