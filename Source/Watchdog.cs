@@ -45,7 +45,7 @@ namespace AdvancedPQSTools
             watchdogRun = true;
 
             Camera[] cameras = Camera.allCameras;
-            string bodyName = FlightGlobals.getMainBody().name;
+            string bodyName = FlightGlobals.getMainBody()?.name;
 
             ConfigNode clipPlaneSettings;
             if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D11 ||
@@ -59,6 +59,7 @@ namespace AdvancedPQSTools
             }
 
             if (clipPlaneSettings == null) return;
+            if (string.IsNullOrEmpty(bodyName)) { Debug.Log("CLAYELADDEDLOGS bodyName was null");  return; }
 
             foreach (Camera cam in cameras)
             {
