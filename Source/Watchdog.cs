@@ -45,21 +45,23 @@ namespace AdvancedPQSTools
             watchdogRun = true;
 
             Camera[] cameras = Camera.allCameras;
-            string bodyName = FlightGlobals.getMainBody()?.name;
+            string bodyName = FlightGlobals.getMainBody().name;
 
-            ConfigNode clipPlaneSettings;
-            if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D11 ||
+            ConfigNode clipPlaneSettings = null;
+            if (Settings != null)
+            {
+                if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D11 ||
                 SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D12)
-            {
-                clipPlaneSettings = Settings.GetNode("ClipPlanes")?.GetNode("DX11");
-            }
-            else
-            {
-                clipPlaneSettings = Settings.GetNode("ClipPlanes")?.GetNode("Other");
+                {
+                    clipPlaneSettings = Settings.GetNode("ClipPlanes")?.GetNode("DX11");
+                }
+                else
+                {
+                    clipPlaneSettings = Settings.GetNode("ClipPlanes")?.GetNode("Other");
+                }
             }
 
             if (clipPlaneSettings == null) return;
-            if (string.IsNullOrEmpty(bodyName)) { Debug.Log("CLAYELADDEDLOGS bodyName was null");  return; }
 
             foreach (Camera cam in cameras)
             {
