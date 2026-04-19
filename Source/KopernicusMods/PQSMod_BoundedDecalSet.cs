@@ -150,44 +150,64 @@ namespace AdvancedPQSTools
             double uD = (u - u0) * w;
             double vD = (v - v0) * h;
 
-            double PY0, PY1, PY2, PY3;
+            // Read all 16 samples into a 4x4 grid. We need them upfront
+            // to check for fallthrough (DN=0) pixels — if any sample in
+            // the kernel is a fallthrough sentinel, the bicubic interp
+            // would produce an incorrect result by blending real terrain
+            // heights toward zero (which gets mapped to `offset` meters,
+            // creating a visible seam). Instead, we return 0 to signal
+            // fallthrough to the caller.
+            double s00, s01, s02, s03;
+            double s10, s11, s12, s13;
+            double s20, s21, s22, s23;
+            double s30, s31, s32, s33;
 
             {
                 int y = ClampEdge(y0 - 1, 0, h);
-                PY0 = MitchellNetravali(
-                    map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y),
-                    uD);
+                s00 = map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y);
+                s01 = map.GetPixelFloat(ClampEdge(x0, 0, w), y);
+                s02 = map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y);
+                s03 = map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y);
             }
             {
                 int y = ClampEdge(y0, 0, h);
-                PY1 = MitchellNetravali(
-                    map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y),
-                    uD);
+                s10 = map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y);
+                s11 = map.GetPixelFloat(ClampEdge(x0, 0, w), y);
+                s12 = map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y);
+                s13 = map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y);
             }
             {
                 int y = ClampEdge(y0 + 1, 0, h);
-                PY2 = MitchellNetravali(
-                    map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y),
-                    uD);
+                s20 = map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y);
+                s21 = map.GetPixelFloat(ClampEdge(x0, 0, w), y);
+                s22 = map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y);
+                s23 = map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y);
             }
             {
                 int y = ClampEdge(y0 + 2, 0, h);
-                PY3 = MitchellNetravali(
-                    map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y),
-                    map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y),
-                    uD);
+                s30 = map.GetPixelFloat(ClampEdge(x0 - 1, 0, w), y);
+                s31 = map.GetPixelFloat(ClampEdge(x0, 0, w), y);
+                s32 = map.GetPixelFloat(ClampEdge(x0 + 1, 0, w), y);
+                s33 = map.GetPixelFloat(ClampEdge(x0 + 2, 0, w), y);
             }
+
+            // Fallthrough check: if any sample is 0, skip this vertex.
+            // The 4 center samples (s11, s12, s21, s22) being zero means
+            // the vertex itself is in fallthrough territory. The outer 12
+            // being zero means we're within 1-2 pixels of a seam, where
+            // bicubic would produce bad values.
+            if (s00 == 0.0 || s01 == 0.0 || s02 == 0.0 || s03 == 0.0 ||
+                s10 == 0.0 || s11 == 0.0 || s12 == 0.0 || s13 == 0.0 ||
+                s20 == 0.0 || s21 == 0.0 || s22 == 0.0 || s23 == 0.0 ||
+                s30 == 0.0 || s31 == 0.0 || s32 == 0.0 || s33 == 0.0)
+            {
+                return 0.0;
+            }
+
+            double PY0 = MitchellNetravali(s00, s01, s02, s03, uD);
+            double PY1 = MitchellNetravali(s10, s11, s12, s13, uD);
+            double PY2 = MitchellNetravali(s20, s21, s22, s23, uD);
+            double PY3 = MitchellNetravali(s30, s31, s32, s33, uD);
 
             return MitchellNetravali(PY0, PY1, PY2, PY3, vD);
         }

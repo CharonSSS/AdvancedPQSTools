@@ -1,19 +1,16 @@
 ﻿using AdvancedPQSTools.OnDemand;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace AdvancedPQSTools
 {
     /// <summary>
     /// A colormap PQSMod that can parse cubemapped textures.
+    /// Uses manual bilinear interpolation with cross-face boundary sampling
+    /// to produce seamless results across cubemap face edges.
     /// </summary>
     public class PQSMod_VertexColorCubeMap : PQSMod
     {
-
         public MapSOTile vertexColorMapXn;
         public MapSOTile vertexColorMapXp;
         public MapSOTile vertexColorMapYn;
@@ -21,146 +18,232 @@ namespace AdvancedPQSTools
         public MapSOTile vertexColorMapZn;
         public MapSOTile vertexColorMapZp;
         public float edgeClampRange;
-        protected int tileWidth = 1;
-        protected float pixelClamp;
 
-        public Vector3 UVtoXYZ(double u, double v)
+        /// <summary>
+        /// Convert face index + face-local UV (in [-1,+1]) back to a 3D direction.
+        /// Inverse of the cubemap projection.
+        /// </summary>
+        private static void FaceUVToDirection(
+            int faceIndex, double faceU, double faceV,
+            out double dx, out double dy, out double dz)
         {
-            Vector3 coords = new Vector3();
-
-            double theta = 2.0 * Math.PI * u;
-            double phi = Math.PI * v;
-
-            coords.x = (float)(Math.Cos(theta) * Math.Sin(phi));
-            coords.y = (float)(-Math.Cos(phi));
-            coords.z = (float)(Math.Sin(theta) * Math.Sin(phi));
-
-            return coords;
-        }
-        public Vector3 XYZtoFaceUVI(Vector3 coords)
-        {
-            //X = U, Y = V, Z = FaceIndex 
-            Vector3 uvIndex = new Vector3();
-            Vector3 absCoords = new Vector3(Math.Abs(coords.x), Math.Abs(coords.y), Math.Abs(coords.z));
-
-            Boolean isXPositive = coords.x > 0 ? true : false;
-            Boolean isYPositive = coords.y > 0 ? true : false;
-            Boolean isZPositive = coords.z > 0 ? true : false;
-
-            float maxAxis = 1;
-
-            //Negative X
-            if (!isXPositive && absCoords.x >= absCoords.y && absCoords.x >= absCoords.z)
+            dx = 0; dy = 0; dz = 0;
+            switch (faceIndex)
             {
-                maxAxis = absCoords.x;
-                uvIndex.x = coords.z;
-                uvIndex.y = coords.y;
-                uvIndex.z = 0;
+                case 0: dx = -1; dz = faceU; dy = faceV; break;
+                case 1: dx = 1; dz = -faceU; dy = faceV; break;
+                case 2: dy = -1; dx = faceU; dz = faceV; break;
+                case 3: dy = 1; dx = faceU; dz = -faceV; break;
+                case 4: dz = -1; dx = -faceU; dy = faceV; break;
+                default: dz = 1; dx = faceU; dy = faceV; break;
             }
-            //Positive X
-            if (isXPositive && absCoords.x >= absCoords.y && absCoords.x >= absCoords.z)
-            {
-                maxAxis = absCoords.x;
-                uvIndex.x = -coords.z;
-                uvIndex.y = coords.y;
-                uvIndex.z = 1;
-            }
-            //Negative Y
-            if (!isYPositive && absCoords.y >= absCoords.x && absCoords.y >= absCoords.z)
-            {
-                maxAxis = absCoords.y;
-                uvIndex.x = coords.x;
-                uvIndex.y = coords.z;
-                uvIndex.z = 2;
-            }
-            //Positive Y
-            if (isYPositive && absCoords.y >= absCoords.x && absCoords.y >= absCoords.z)
-            {
-                maxAxis = absCoords.y;
-                uvIndex.x = coords.x;
-                uvIndex.y = -coords.z;
-                uvIndex.z = 3;
-            }
-            //Negative Z
-            if (!isZPositive && absCoords.z >= absCoords.x && absCoords.z >= absCoords.y)
-            {
-                maxAxis = absCoords.z;
-                uvIndex.x = -coords.x;
-                uvIndex.y = coords.y;
-                uvIndex.z = 4;
-            }
-            if (isZPositive && absCoords.z >= absCoords.x && absCoords.z >= absCoords.y)
-            {
-                maxAxis = absCoords.z;
-                uvIndex.x = coords.x;
-                uvIndex.y = coords.y;
-                uvIndex.z = 5;
-            }
-
-            uvIndex.x = 0.5f * (uvIndex.x / maxAxis + 1.0f);
-            uvIndex.y = 0.5f * (uvIndex.y / maxAxis + 1.0f);
-
-
-            return uvIndex;
         }
 
-        public Color GetCubeMapColor(MapSO texXn, MapSO texXp, MapSO texYn, MapSO texYp, MapSO texZn, MapSO texZp, double u, double v)
+        /// <summary>
+        /// Given a 3D direction, determine the cubemap face and the integer
+        /// pixel coordinate on that face's texture.
+        /// </summary>
+        private static void ProjectToFacePixel(
+            double dx, double dy, double dz,
+            int faceWidth, int faceHeight,
+            out int faceIndex, out int px, out int py)
         {
-            Color col = new Color(255, 0, 255);
-            Vector3 coords = UVtoXYZ(u, v);
-            Vector3 uvIndex = XYZtoFaceUVI(coords);
+            double ax = Math.Abs(dx);
+            double ay = Math.Abs(dy);
+            double az = Math.Abs(dz);
 
-            //Clamp values near edges to prevent wrapping
+            bool isXPos = dx > 0;
+            bool isYPos = dy > 0;
+            bool isZPos = dz > 0;
 
+            double maxAxis = 1;
+            double faceU = 0, faceV = 0;
+            faceIndex = 0;
 
-            //Xn -> Zn
-            uvIndex.x = Math.Max(uvIndex.x, pixelClamp);
-            uvIndex.x = Math.Min(uvIndex.x, 1 - pixelClamp);
-            uvIndex.y = Math.Max(uvIndex.y, pixelClamp);
-            uvIndex.y = Math.Min(uvIndex.y, 1 - pixelClamp);
+            if (!isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = dz; faceV = dy; faceIndex = 0; }
+            if (isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = -dz; faceV = dy; faceIndex = 1; }
+            if (!isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = dx; faceV = dz; faceIndex = 2; }
+            if (isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = dx; faceV = -dz; faceIndex = 3; }
+            if (!isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = -dx; faceV = dy; faceIndex = 4; }
+            if (isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = dx; faceV = dy; faceIndex = 5; }
 
-            if (uvIndex.z == 0)
-                return texZn.GetPixelColor((1 - uvIndex.x), (1 - uvIndex.y));
+            double su = 0.5 * (faceU / maxAxis + 1.0);
+            double sv = 0.5 * (faceV / maxAxis + 1.0);
 
+            double texU, texV;
+            switch (faceIndex)
+            {
+                case 0: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 1: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 2: texU = sv; texV = 1.0 - su; break;
+                case 3: texU = 1.0 - sv; texV = su; break;
+                case 4: texU = 1.0 - su; texV = 1.0 - sv; break;
+                default: texU = 1.0 - su; texV = 1.0 - sv; break;
+            }
 
-            if (uvIndex.z == 1)
-                return texZp.GetPixelColor((1 - uvIndex.x), (1 - uvIndex.y));
+            if (texU < 0.0) texU = 0.0;
+            if (texU > 1.0) texU = 1.0;
+            if (texV < 0.0) texV = 0.0;
+            if (texV > 1.0) texV = 1.0;
 
-            if (uvIndex.z == 2)
-                return texYn.GetPixelColor((uvIndex.y), (1 - uvIndex.x));
+            px = (int)(texU * (faceWidth - 1) + 0.5);
+            py = (int)(texV * (faceHeight - 1) + 0.5);
 
-            if (uvIndex.z == 3)
-                return texYp.GetPixelColor((1 - uvIndex.y), (uvIndex.x));
-
-            if (uvIndex.z == 4)
-                return texXn.GetPixelColor((1 - uvIndex.x), (1 - uvIndex.y));
-
-            if (uvIndex.z == 5)
-                return texXp.GetPixelColor((1 - uvIndex.x), (1 - uvIndex.y));
-
-            return col;
+            if (px < 0) px = 0;
+            if (px >= faceWidth) px = faceWidth - 1;
+            if (py < 0) py = 0;
+            if (py >= faceHeight) py = faceHeight - 1;
         }
 
-        protected void updateTileWidths()
+        private Color SampleFace(int faceIndex, int px, int py)
         {
-            int maxWidthX = Math.Max(vertexColorMapXn.Width, vertexColorMapXp.Width);
-            int maxWidthY = Math.Max(vertexColorMapYn.Width, vertexColorMapYp.Width);
-            int maxWidthZ = Math.Max(vertexColorMapZn.Width, vertexColorMapZp.Width);
-            int maxWidth = Math.Max(Math.Max(maxWidthX, maxWidthY), maxWidthZ);
-
-            tileWidth = Math.Max(maxWidth, tileWidth);
-            pixelClamp = 1.0f / (tileWidth / edgeClampRange);
+            switch (faceIndex)
+            {
+                case 0: return vertexColorMapZn.GetPixelColor(px, py);
+                case 1: return vertexColorMapZp.GetPixelColor(px, py);
+                case 2: return vertexColorMapYn.GetPixelColor(px, py);
+                case 3: return vertexColorMapYp.GetPixelColor(px, py);
+                case 4: return vertexColorMapXn.GetPixelColor(px, py);
+                default: return vertexColorMapXp.GetPixelColor(px, py);
+            }
         }
 
+        /// <summary>
+        /// Sample a pixel that falls outside the primary face's bounds by
+        /// converting back to a 3D direction and re-projecting onto the
+        /// correct adjacent face.
+        /// </summary>
+        private Color SampleVia3D(
+            int srcFace, int px, int py, int faceWidth, int faceHeight)
+        {
+            double texU = (double)px / (faceWidth - 1);
+            double texV = (double)py / (faceHeight - 1);
+
+            // Undo the per-face UV remapping to recover su, sv in [0,1]
+            double su, sv;
+            switch (srcFace)
+            {
+                case 0: su = 1.0 - texU; sv = 1.0 - texV; break;
+                case 1: su = 1.0 - texU; sv = 1.0 - texV; break;
+                case 2: su = 1.0 - texV; sv = texU; break;
+                case 3: su = texV; sv = 1.0 - texU; break;
+                case 4: su = 1.0 - texU; sv = 1.0 - texV; break;
+                default: su = 1.0 - texU; sv = 1.0 - texV; break;
+            }
+
+            // Map [0,1] → [-1,+1] face-local space
+            double normU = su * 2.0 - 1.0;
+            double normV = sv * 2.0 - 1.0;
+
+            double dx, dy, dz;
+            FaceUVToDirection(srcFace, normU, normV, out dx, out dy, out dz);
+
+            int newFace, newPx, newPy;
+            ProjectToFacePixel(dx, dy, dz, faceWidth, faceHeight,
+                out newFace, out newPx, out newPy);
+
+            return SampleFace(newFace, newPx, newPy);
+        }
 
         public override void OnSetup()
         {
             base.requirements = PQS.ModiferRequirements.MeshColorChannel;
-            updateTileWidths();
         }
+
         public override void OnVertexBuildHeight(PQS.VertexBuildData data)
         {
-            data.vertColor = GetCubeMapColor(vertexColorMapXn, vertexColorMapXp, vertexColorMapYn, vertexColorMapYp, vertexColorMapZn, vertexColorMapZp, (data.u), (data.v));
+            int faceWidth = vertexColorMapZn.Width;
+            int faceHeight = vertexColorMapZn.Height;
+
+            double u = data.u;
+            double v = data.v;
+
+            // ── UVtoXYZ ──────────────────────────────────────────────
+            double theta = 2.0 * Math.PI * u;
+            double phi = Math.PI * v;
+
+            float cx = (float)(Math.Cos(theta) * Math.Sin(phi));
+            float cy = (float)(-Math.Cos(phi));
+            float cz = (float)(Math.Sin(theta) * Math.Sin(phi));
+
+            // ── XYZtoFaceUVI ─────────────────────────────────────────
+            float ax = Math.Abs(cx);
+            float ay = Math.Abs(cy);
+            float az = Math.Abs(cz);
+
+            bool isXPos = cx > 0;
+            bool isYPos = cy > 0;
+            bool isZPos = cz > 0;
+
+            float maxAxis = 1;
+            float faceU = 0, faceV = 0;
+            int primaryFace = 0;
+
+            if (!isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = cz; faceV = cy; primaryFace = 0; }
+            if (isXPos && ax >= ay && ax >= az)
+            { maxAxis = ax; faceU = -cz; faceV = cy; primaryFace = 1; }
+            if (!isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = cx; faceV = cz; primaryFace = 2; }
+            if (isYPos && ay >= ax && ay >= az)
+            { maxAxis = ay; faceU = cx; faceV = -cz; primaryFace = 3; }
+            if (!isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = -cx; faceV = cy; primaryFace = 4; }
+            if (isZPos && az >= ax && az >= ay)
+            { maxAxis = az; faceU = cx; faceV = cy; primaryFace = 5; }
+
+            double su = 0.5 * (faceU / maxAxis + 1.0);
+            double sv = 0.5 * (faceV / maxAxis + 1.0);
+
+            double texU, texV;
+            switch (primaryFace)
+            {
+                case 0: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 1: texU = 1.0 - su; texV = 1.0 - sv; break;
+                case 2: texU = sv; texV = 1.0 - su; break;
+                case 3: texU = 1.0 - sv; texV = su; break;
+                case 4: texU = 1.0 - su; texV = 1.0 - sv; break;
+                default: texU = 1.0 - su; texV = 1.0 - sv; break;
+            }
+
+            double px = texU * (faceWidth - 1);
+            double py = texV * (faceHeight - 1);
+
+            int x0 = (int)Math.Floor(px);
+            int y0 = (int)Math.Floor(py);
+            int x1 = x0 + 1;
+            int y1 = y0 + 1;
+
+            float fx = (float)(px - x0);
+            float fy = (float)(py - y0);
+
+            // ── Sample 4 bilinear corners with cross-face fallback ───
+            Color p00 = (x0 >= 0 && x0 < faceWidth && y0 >= 0 && y0 < faceHeight)
+                ? SampleFace(primaryFace, x0, y0)
+                : SampleVia3D(primaryFace, x0, y0, faceWidth, faceHeight);
+
+            Color p10 = (x1 >= 0 && x1 < faceWidth && y0 >= 0 && y0 < faceHeight)
+                ? SampleFace(primaryFace, x1, y0)
+                : SampleVia3D(primaryFace, x1, y0, faceWidth, faceHeight);
+
+            Color p01 = (x0 >= 0 && x0 < faceWidth && y1 >= 0 && y1 < faceHeight)
+                ? SampleFace(primaryFace, x0, y1)
+                : SampleVia3D(primaryFace, x0, y1, faceWidth, faceHeight);
+
+            Color p11 = (x1 >= 0 && x1 < faceWidth && y1 >= 0 && y1 < faceHeight)
+                ? SampleFace(primaryFace, x1, y1)
+                : SampleVia3D(primaryFace, x1, y1, faceWidth, faceHeight);
+
+            data.vertColor = p00 * ((1f - fx) * (1f - fy))
+                           + p10 * (fx * (1f - fy))
+                           + p01 * ((1f - fx) * fy)
+                           + p11 * (fx * fy);
         }
     }
 }
