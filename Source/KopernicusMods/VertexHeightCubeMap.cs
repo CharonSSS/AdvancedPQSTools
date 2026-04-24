@@ -1,4 +1,4 @@
-﻿using AdvancedPQSTools.OnDemand;
+using AdvancedPQSTools.OnDemand;
 using Kopernicus.Components;
 using Kopernicus.ConfigParser.Attributes;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
