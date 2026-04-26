@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace AdvancedPQSTools
 {
     /// <summary>
-    /// The RSS watchdog is a general place to prevent RSS changes
+    /// The AdvancedPQSTools watchdog is a general place to prevent AdvancedPQSTools changes
     /// from being reverted by other mods when our back is turned.
     /// </summary>
     [KSPAddon(KSPAddon.Startup.FlightAndKSC, false)]
@@ -19,8 +20,7 @@ namespace AdvancedPQSTools
 
         public void Start()
         {
-            foreach (ConfigNode node in GameDatabase.Instance.GetConfigNodes("ADVANCEDPQSTOOLS"))
-                Settings = node;
+            Settings = GameDatabase.Instance.GetConfigNodes("ADVANCEDPQSTOOLS").FirstOrDefault(n => n.HasNode("ClipPlanes"));
 
             GameEvents.onVesselSOIChanged.Add(OnVesselSOIChanged);
             GameEvents.onVesselSituationChange.Add(OnVesselSituationChanged);
@@ -47,7 +47,9 @@ namespace AdvancedPQSTools
             Camera[] cameras = Camera.allCameras;
             string bodyName = FlightGlobals.getMainBody().name;
 
-            ConfigNode clipPlaneSettings;
+            if (Settings == null) return;
+
+            ConfigNode clipPlaneSettings = null;
             if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D11 ||
                 SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D12)
             {
