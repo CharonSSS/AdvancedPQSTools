@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace AdvancedPQSTools
@@ -19,8 +20,7 @@ namespace AdvancedPQSTools
 
         public void Start()
         {
-            foreach (ConfigNode node in GameDatabase.Instance.GetConfigNodes("ADVANCEDPQSTOOLS"))
-                Settings = node;
+            Settings = GameDatabase.Instance.GetConfigNodes("ADVANCEDPQSTOOLS").FirstOrDefault(n => n.HasNode("ClipPlanes"));
 
             GameEvents.onVesselSOIChanged.Add(OnVesselSOIChanged);
             GameEvents.onVesselSituationChange.Add(OnVesselSituationChanged);
