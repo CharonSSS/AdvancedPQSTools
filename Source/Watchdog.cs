@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 namespace AdvancedPQSTools
 {
     /// <summary>
-    /// The RSS watchdog is a general place to prevent RSS changes
+    /// The AdvancedPQSTools watchdog is a general place to prevent AdvancedPQSTools changes
     /// from being reverted by other mods when our back is turned.
     /// </summary>
     [KSPAddon(KSPAddon.Startup.FlightAndKSC, false)]
