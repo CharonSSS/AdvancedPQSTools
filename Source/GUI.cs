@@ -119,6 +119,8 @@ namespace AdvancedPQSTools
         {
             GUILayout.BeginVertical();
 
+            GUILayout.Label("Left Alt + G to close.");
+
             _scrollPos = GUILayout.BeginScrollView(_scrollPos);
 
             GUILayout.Label("RunwayFix");
